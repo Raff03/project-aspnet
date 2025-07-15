@@ -1,0 +1,57 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SilkTheory.master.cs" Inherits="FinalProject_WA.SilkTheory" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>Silk Theory.co</title>
+    <link rel="icon" type="image/png" href="Images/Icon.png" />
+
+    <asp:ContentPlaceHolder ID="head" runat="server" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="Styles/Style1.css" rel="stylesheet" type="text/css" />
+    <link href="Styles/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <form id="form1" runat="server">
+        <h1 class="site-title">
+            <asp:Image ID="imgLogo" runat="server" ImageUrl="~/Images/LOGO.png" AlternateText="SilkTheory.Co" CssClass="logo" />
+            <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/decor.png" AlternateText="SilkTheory.Co" CssClass="logo" />
+        </h1>
+
+        <div class="navbar">
+            <div class="nav-wrapper">
+                <div class="nav-left">
+                    <asp:HyperLink ID="lnkHome" runat="server" NavigateUrl="~/MainPage.aspx">Home</asp:HyperLink>
+                    <asp:HyperLink ID="lnkProducts" runat="server" NavigateUrl="~/ProductListing.aspx">Products</asp:HyperLink>
+                    <asp:HyperLink ID="lnkCart" runat="server" NavigateUrl="~/ShoppingCart.aspx">Cart</asp:HyperLink>
+                    <asp:HyperLink ID="lnkOrders" runat="server" NavigateUrl="~/OrderHistory.aspx">Order&nbsp;History</asp:HyperLink>
+                    <asp:HyperLink ID="lnkAbout" runat="server" NavigateUrl="~/About.aspx">About</asp:HyperLink>
+                    <asp:Panel ID="pnlAdminLinks" runat="server" Visible="false">
+                        <asp:HyperLink ID="lnkAdmin" runat="server" NavigateUrl="~/Admin.aspx">🛠&nbsp;Admin&nbsp;Panel</asp:HyperLink>
+                    </asp:Panel>
+                </div>
+
+                <div class="nav-right">
+                    <asp:Label ID="lblUsername" runat="server" CssClass="username-label" Visible="false" />
+                    <asp:HyperLink ID="lnkRegister" runat="server" NavigateUrl="~/Register.aspx">Register</asp:HyperLink>
+                    <asp:HyperLink ID="lnkLogin" runat="server" NavigateUrl="~/Login.aspx">Login</asp:HyperLink>
+                    <asp:HyperLink ID="lnkLogout" runat="server" NavigateUrl="~/Logout.aspx" Visible="false">Logout</asp:HyperLink>
+                </div>
+            </div>
+        </div>
+
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" />
+
+        <footer class="site-footer">
+            <div class="footer-inner">
+                &copy; <%: DateTime.Now.Year %> SilkTheory.co —
+                <asp:HyperLink ID="lnkPrivacy" runat="server" NavigateUrl="~/Privacy.aspx">Privacy</asp:HyperLink> |
+                <asp:HyperLink ID="lnkTerms" runat="server" NavigateUrl="~/Terms.aspx">Terms</asp:HyperLink> |
+                Built with ❤️ in Malaysia
+            </div>
+        </footer>
+    </form>
+</body>
+</html>
