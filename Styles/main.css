@@ -1,0 +1,521 @@
+﻿/* =============================================================
+   SilkTheory – Main Stylesheet (commercial-grade polish)
+   -------------------------------------------------------------
+   • Consolidated & deduplicated rules
+   • Uses CSS custom properties for quick theming
+   • Harmonised typography, spacing & shadows
+   • Responsive behaviours baked‑in
+   ============================================================= */
+
+/* ---------- CSS Variables ---------- */
+:root {
+    /* Brand palette */
+    --brand-dark: #64181c;
+    --brand-dark-hover: #8a2a30;
+    --brand-light: #f5e9d9;
+    --surface: #ffffff;
+    /* Greyscale */
+    --text-dark: #333;
+    --text-medium: #555;
+    --text-light: #aaa;
+    /* Elevation */
+    --shadow-sm: 0 2px 6px rgba(0,0,0,.08);
+    --shadow-md: 0 4px 12px rgba(0,0,0,.10);
+    --shadow-lg: 0 8px 22px rgba(0,0,0,.12);
+    /* Radii & Spacing */
+    --radius: 12px;
+    --gutter: 30px;
+    --section-y: 50px;
+}
+
+/* ---------- Reset & Base ---------- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+}
+
+html, body {
+    height: 100%
+}
+
+body {
+    font-family: 'Poppins',sans-serif;
+    background: var(--brand-dark);
+    color: var(--text-dark);
+    line-height: 1.55;
+}
+
+img {
+    max-width: 100%;
+    display: block
+}
+
+a {
+    text-decoration: none;
+    color: inherit
+}
+
+form {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ---------- Global Containers ---------- */
+.container {
+    max-width: none;
+    width:100%;
+    padding: var(--section-y) var(--gutter);
+    background: var(--brand-light);
+    border-radius: var(--radius);
+}
+
+.section-title {
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--brand-dark);
+    text-align: center;
+    margin-bottom: var(--section-y);
+}
+
+/* ---------- Navbar ---------- */
+.navbar {
+    background: var(--brand-dark);
+    color: #fff;
+    padding: 10px 20px;
+    box-shadow: var(--shadow-sm);
+}
+
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap
+}
+
+.nav-left, .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 15px
+}
+
+.navbar a {
+    padding: 8px 12px;
+    color: #fff;
+    border-radius: 6px;
+    transition: background .2s
+}
+
+    .navbar a:hover {
+        background: var(--brand-dark-hover)
+    }
+
+.username-label {
+    font-weight: 600
+}
+
+.site-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0,0,0,.5)
+}
+
+.logo {
+    height: 100px;
+    width: auto;
+    object-fit: contain
+}
+
+.header-image img {
+    width: 200px;
+    height: auto;
+}
+
+/* ---------- Buttons ---------- */
+.btn,
+.hero-button,
+.hero-button-slide,
+.btn-back,
+.btn-checkout {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    background: transparent;
+    color: var(--brand-dark);
+    border: 2px solid var(--brand-dark);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background .25s,color .25s,transform .15s; /* subtle micro‑interaction */
+}
+
+    .btn:hover {
+        background: var(--brand-dark);
+        color: #fff;
+        transform: translateY(-2px);
+    }
+
+.hero-button-slide {
+    border-color: #fff;
+    color: #fff
+}
+
+    .hero-button-slide:hover {
+        background: #fff;
+        color: var(--brand-dark)
+    }
+
+.btn-back {
+    background: #ffffff;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm)
+}
+
+    .btn-back:hover {
+        background: var(--brand-dark)
+    }
+
+.btn-checkout {
+    background: var(--brand-dark);
+    color: #fff;
+    border: none
+}
+
+    .btn-checkout:hover {
+        background: var(--brand-dark-hover)
+    }
+
+/* ---------- Card Utility ---------- */
+.card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    padding: 24px;
+    transition: box-shadow .25s transform .25s;
+}
+
+    .card:hover {
+        box-shadow: var(--shadow-lg);
+        transform: translateY(-4px)
+    }
+
+/* ---------- Slider ---------- */
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 1s
+}
+
+    .slide.active {
+        opacity: 1;
+        z-index: 1
+    }
+
+.slide-box {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,.5)
+}
+
+    .slide-box > * {
+        position: relative;
+        z-index: 1
+    }
+
+/* ---------- Auth (Login / Register) ---------- */
+.auth-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+    padding: 40px 20px;
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 450px;
+    background-color: var(--surface);
+    padding: 40px 30px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+}
+
+.auth-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--brand-dark);
+    margin-bottom: 30px
+}
+
+.auth-form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #7b4d4d
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    color: var(--text-dark);
+    margin-bottom: 20px
+}
+
+    .auth-form input::placeholder {
+        color: var(--text-light)
+    }
+
+.auth-form button {
+    width: 100%;
+    background: var(--brand-dark);
+    color: #fff;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background .25s
+}
+
+    .auth-form button:hover {
+        background: var(--brand-dark-hover)
+    }
+
+.auth-message {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 14px
+}
+
+    .auth-message.error {
+        color: #d32f2f
+    }
+
+    .auth-message.success {
+        color: #388e3c
+    }
+
+.auth-switch {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-medium)
+}
+
+    .auth-switch a {
+        color: var(--brand-dark);
+        font-weight: 700
+    }
+
+        .auth-switch a:hover {
+            text-decoration: underline;
+            color: var(--brand-dark-hover)
+        }
+
+.auth-logo {
+    display: center;
+    margin: 30px auto 0;
+    max-width: 80px;
+    opacity: .9;
+    background-color: var(--brand-dark);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+}
+
+/* ---------- Product Listing ---------- */
+.category-dropdown {
+    margin-bottom: var(--gutter);
+    padding: 12px 14px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    margin-left: 40px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 40px;
+    
+}
+
+.product-card {
+    background-color: #fff;
+    border: 1px solid #eee;
+    text-align: center;
+    padding: 20px;
+    transition: box-shadow 0.3s ease;
+    border-radius: 8px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+}
+
+    .product-card:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+.product-image {
+    text-align: center;
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+.product-title {
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #111;
+    margin-bottom: 5px;
+}
+
+.product-price {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.sold-out-label {
+    position: absolute;
+    top: 12px;
+    left: -40px;
+    background: #000;
+    color: #fff;
+    padding: 4px 60px;
+    transform: rotate(-45deg);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .5px
+}
+
+/* ---------- Tables (Cart & Order) ---------- */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--surface);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+    .table th, .table td {
+        padding: 12px 16px;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+        font-size: 14px
+    }
+
+    .table th {
+        background: var(--brand-dark);
+        color: #fff;
+        font-weight: 600;
+        text-transform: uppercase
+    }
+
+    .table tbody tr:hover {
+        background: var(--brand-light)
+    }
+
+/* ---------- Cart Summary ---------- */
+.cart-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm)
+}
+
+.cart-total-label {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--brand-dark)
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+    background: var(--brand-dark);
+    color: #fff;
+    padding: 20px 10px;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 40px
+}
+
+    .site-footer a {
+        color: #fff;
+        margin: 0 6px;
+        font-weight: 600
+    }
+
+        .site-footer a:hover {
+            text-decoration: underline
+        }
+
+/* ---------- Responsive Breakpoints ---------- */
+@media(max-width:768px) {
+    .container {
+        padding: 30px 20px
+    }
+
+    .section-title {
+        font-size: 28px
+    }
+
+    .product-grid {
+        gap: 20px
+    }
+}
+
+@media(max-width:500px) {
+    .auth-container {
+        padding: 30px 20px;
+        margin: 0 15px;
+        transform: none;
+        top: auto
+    }
+
+    .cart-summary {
+        flex-direction: column;
+        gap: 15px
+    }
+}
